@@ -33,19 +33,30 @@ $("load").addEventListener('click', ()=>{
         case 1:
             var space = document.createElement('div'); 
             space.id = "space1";
+            isMaster = 0;
             break;
         case 2:
             var space = document.createElement('div'); 
             space.id = "space2";
+            isMaster = 0;
             break;
         default:
             return;
     }
     
-    space.innerHTML = "<ul><li><input type='checkbox' class='expand'>Root<ul><li><input type='checkbox' class='expand'>Child<ul><li><input type='checkbox' class='expand'>Child 1</li><li><input type='checkbox' class='expand'>Child 2</li></ul></li></ul></li></ul>";
+    space.innerHTML = "<ul><li><input type='checkbox' class='expand' value='root'>Root<ul><li><input type='checkbox' class='expand' value='child'>Child<ul><li><input type='checkbox' class='expand' value='child1'>Child 1</li><li><input type='checkbox' class='expand' value='child2'>Child 2</li></ul></li></ul></li></ul><div class='form-group' style='padding-left: 15%'><input type='submit' class='submit-load' id='sent' value='sent'></div>";
+    
     body_space.appendChild(space);
     expanded();
-    
+
+    $("sent").addEventListener('click', ()=>{
+        var space_data = document.getElementsByClassName('expand').checked;
+        console.log(typeof(space_data));
+        // for(var i=0; i<space_data.length; i++) {
+        //     console.log(space_data[i]);
+        // };
+    });
+
     // for (let i=0;i<space_data.length;i++) {
     //     var option = document.createElement("ul");
     //     var list_data = document.createElement("li");
@@ -60,5 +71,6 @@ $("load").addEventListener('click', ()=>{
     //     space.appendChild(option);
     // };
 });
+
 
 
