@@ -22,24 +22,27 @@ function expanded(){
 
 $("btn-m").addEventListener('click', ()=>{
     console.log("master");
-    isMaster = true;
+    isMaster = 1;
 });
 $("btn-s").addEventListener('click', ()=>{
     console.log("slave");
-    isMaster = false;
+    isMaster = 2;
 });
 $("load").addEventListener('click', ()=>{
-    if(isMaster){
-        var space = document.createElement('div'); 
-        space.id = "space1";
+    switch(isMaster){
+        case 1:
+            var space = document.createElement('div'); 
+            space.id = "space1";
+            break;
+        case 2:
+            var space = document.createElement('div'); 
+            space.id = "space2";
+            break;
+        default:
+            return;
     }
-    else{
-        var space = document.createElement('div'); 
-        space.id = "space2";
-    }
-    var space_data = ["Space 1", "Space 2", "Space 3", "Space 4"];
     
-    space.innerHTML = "<ul><li><a class='expand'>Root</a><ul><li><a class='expand'>Child</a><ul><li><a class='expand'>Super Child</a></li></ul></li></ul></li></ul>";
+    space.innerHTML = "<ul><li><input type='checkbox' class='expand'>Root<ul><li><input type='checkbox' class='expand'>Child<ul><li><input type='checkbox' class='expand'>Child 1</li><li><input type='checkbox' class='expand'>Child 2</li></ul></li></ul></li></ul>";
     body_space.appendChild(space);
     expanded();
     
